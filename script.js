@@ -1,8 +1,11 @@
 $(document).ready(function(){
   document.querySelectorAll('img').forEach(item => {
-  item.addEventListener('mouseenter', event => {
-    starEntered(item);
-  })
+    let imageId = item.id;
+    if(imageId.startsWith('star')){
+      item.addEventListener('mouseenter', event => {
+        starEntered(item);
+      })
+    }
 })
 });
 function starEntered(element) {
