@@ -3,17 +3,19 @@ $(document).ready(function(){
     let imageName = item.name;
     if(imageName.startsWith('star')){
       item.addEventListener('mouseenter', event => {
-        starEntered(item);
+        starEntered(item, event);
       })
     }
 })
 });
-function starEntered(element) {
-  StarEnter(element.x, element.y);
+function starEntered(element, event) {
+  StarEnter(element, event);
 }
-function StarEnter(x, y) {
-    var elem = document.elementFromPoint(x, y)
-    // console.log(elem);
+function StarEnter(elem, evnt) {
+    // var elem = document.elementFromPoint(x, y)
+    var x=evnt.clientX;
+    // var y=elem.y;
+    // console.log(x);
     if (elem != null)
     {
         var elemSz = elem.getBoundingClientRect();
@@ -22,16 +24,16 @@ function StarEnter(x, y) {
         for (var i = 1; i <= 5; i++)
         {
             var stars = `#${i}${starId.substring(1, starId.length)}`;
-            $(stars).attr("src", "/images/starEmpty.png");
+            $(stars).attr("src", "images/starEmpty.png");
         }
         for (var i = 1; i < starIndex; i++)
         {
             var stars = `#${i}${starId.substring(1, starId.length)}`;
-            $(stars).attr("src", `/images/starFill.png`);
+            $(stars).attr("src", `images/starFill.png`);
         }
         var lastStar = `#${starIndex}${starId.substring(1, starId.length)}`;
         var halfFull = x < elemSz.left + elemSz.width / 2 ? `Half` : `Fill`;
-        $(lastStar).attr("src", `/images/star${halfFull}.png`);
+        $(lastStar).attr("src", `images/star${halfFull}.png`);
 
         // all stars
         var images = document.getElementsByTagName('img');
@@ -43,7 +45,7 @@ function StarEnter(x, y) {
             for (var i = 0; i <= images.length; i++)
             {
                 var img = images.item(i);
-                if (img != null)
+                if (img != null && img.name!="logo")
                 {
                     var starSz = img.getBoundingClientRect();
                     if (starSz.width == 16) {
@@ -59,14 +61,14 @@ function StarEnter(x, y) {
             for (var i = 0; i < bigStars.length; i++)
             {
                 var bigStar = bigStars[i];
-                if (bigStar != null) { bigStar.src = `/images/starEmpty.png`; }
+                if (bigStar != null) { bigStar.src = `images/starEmpty.png`; }
             }
             for (var i = 0; i < fullStars; i++)
             {
                 var bigStar = bigStars[i];
-                if (bigStar != null) {bigStar.src = `/images/starFill.png`; }
+                if (bigStar != null) {bigStar.src = `images/starFill.png`;}
             }
-            if (avgStars - fullStars >= .5) { bigStars[fullStars].src = `/images/starHalf.png`;}
+            if (avgStars - fullStars >= .5) { bigStars[fullStars].src = `images/starHalf.png`;}
         }
     }
     return null;
