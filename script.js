@@ -55,7 +55,7 @@ function StarEnter(x, y) {
             allPoints = (allPoints == 0 ? 1 : allPoints);
             var avgStars = bigStars.length * (fillPoints / allPoints);
             var fullStars = Math.floor(avgStars);
-            //console.log(`Big=${bigStars.length}, Fill=${fillPoints}, All=${allPoints}, Avg=${avgStars}, Full=${fullStars}`);
+            // console.log(`Big=${bigStars.length}, Fill=${fillPoints}, All=${allPoints}, Avg=${avgStars}, Full=${fullStars}`);
             for (var i = 0; i < bigStars.length; i++)
             {
                 var bigStar = bigStars[i];
