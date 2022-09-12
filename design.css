@@ -1,0 +1,17 @@
+.input-group-append {
+  cursor: pointer;
+}
+th {
+    text-align: center; /* Or right or left */
+}
+.card{
+    width:380px;
+    border:none;
+    height:280px;
+}
+/* .highlightStar {
+  img.setAttribute('src', 'images/' + 'starFill' + '.png');
+} */
+input[type=checkbox]:checked {
+  
+}

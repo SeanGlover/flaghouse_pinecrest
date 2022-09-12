@@ -1,0 +1,400 @@
+<!-- <?php
+if($_POST["message"]) {
+mail("seanglover.spg@gmail.com", "Instaltion submit form",
+$_POST["Here is an automated email submitted by the installation form"]. "From: seanglover.spg@gmail.com");
+}
+?> -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="shortcut icon" href="https://www.facebook.com/FlagHouseInc/photos/a.223979700969730/1400491309985224/"> -->
+    <link rel="icon" type="image/x-icon" href="images/fh.ico">
+
+    <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <!-- <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script> -->
+
+    <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <!-- mine -->
+    <link rel="stylesheet" href="design.css">
+    <script src="script.js"></script>
+
+    <title>Flaghouse</title>
+  </head>
+  <body>
+    <img src="images/fhSnoezelen.png" class="rounded mx-auto d-block" alt="..." style="padding: 20px">
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin: 9px">
+      <form class="row g-3 needs-validation" novalidate method="post" action="sending_email.php">
+
+        <!-- User Name: <input type="text" name="name" > <br />
+        User email: <input type="email" name="email" > <br />
+        User Subject: <input type="text" name="subject" > <br />
+        User Message: <textarea name="msg"></textarea>
+        <button type="submit" name="sending_email_btn">Send</button> -->
+
+        <div class="row" style="padding: 8px 0px 0px 0px; margin: 0px;"> <!-- business section -->
+          <div class="col-md-3"> <!-- business_name -->
+            <label for="businessName" class="form-label" id="businessNameLabel">Business name</label>
+            <input type="text" class="form-control" id="businessName" value="Pinecrest Queensway" required>
+          </div>
+          <div class="col-md-4"> <!-- purchase_order -->
+            <label for="purchaseOrder" class="form-label" id="purchaseOrderLabel">Purchase order</label>
+            <input type="text" class="form-control" id="purchaseOrder" value="APOPP6801" required>
+            <div class="invalid-feedback">
+              Please provide a valid street.
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6"> <!-- document_date -->
+            <label for="documentDate" class="form-label">Document date</label>
+            <div class="input-group">
+              <input id="documentDate" class="form-control" type="date" value="2022-09-12" />
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding: 8px 0px 0px 0px; margin: 0px;"> <!-- address -->
+          <div class="col-md-6"> <!-- street -->
+            <label for="addressStreet" class="form-label" id="addressStreetLabel">Street</label>
+            <input type="text" class="form-control" id="addressStreet" value="2680 Ahearn Ave" required>
+            <div class="invalid-feedback">
+              Please provide a valid street.
+            </div>
+          </div>
+          <div class="col-md-2"> <!-- city -->
+            <label for="addressCity" class="form-label" id="addressCityLabel">City</label>
+            <input type="text" class="form-control" id="addressCity" value="Ottawa" required>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="col-md-2"> <!-- provinces -->
+            <label for="provinces" class="form-label">Province</label>
+            <select class="form-select" id="provinces" value="Ontario" required>
+              <option selected disabled id="provincesLabel">Choose a province</option>
+              <option value="AB">Alberta</option>
+              <option value="BC">British Columbia</option>
+              <option value="MB">Manitoba</option>
+              <option value="NB">New Brunswick</option>
+              <option value="NL">Newfoundland and Labrador</option>
+              <option value="NS">Nova Scotia</option>
+              <option value="NT">Northwest Territories</option>
+              <option value="NU">Nunavut</option>
+              <option value="ON" selected>Ontario</option>
+              <option value="PE">Prince Edward Island</option>
+              <option value="QC">Québec</option>
+              <option value="SK">Saskatchewan</option>
+              <option value="YT">Yukon</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid province.
+            </div>
+          </div>
+          <div class="col-md-1"> <!-- postal_code -->
+            <label for="addressPostalCode" class="form-label" id="addressPostalCodeLabel">Postal code</label>
+            <input type="text" class="form-control" id="addressPostalCode" required value="K2B 6Z9">
+            <div class="invalid-feedback">
+              Please provide a valid postal code.
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-left" style="padding: 8px 0px 0px 0px; margin: 0px;"> <!-- contact section -->
+          <div class="col-md-2"> <!-- contact_name -->
+            <label for="contactName" class="form-label" id="contactNameLabel">Contact name</label>
+            <input type="text" class="form-control" id="contactName" value="Michelle Crogie" required>
+          </div>
+          <div class="col-md-3"> <!-- contact_title -->
+            <label for="contactTitle" class="form-label" id="contactTitleLabel">Contact title</label>
+            <input type="text" class="form-control" id="contactTitle" value="Program and services coordinator" required>
+          </div>
+          <div class="col-md-4"> <!-- contact_email -->
+            <label for="contactEmail" class="form-label" id="contactEmailLabel">Contact email</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-envelope"></i></span>
+              <input type="text" class="form-control" id="contactEmail" value="m.crogie@pqchc.com" aria-describedby="inputGroupPrepend" required>
+            </div>
+          </div>
+          <div class="col-md-2"> <!-- contact_phone -->
+            <label for="" class="form-label" id="contactPhoneLabel">Contact phone</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-telephone"></i></span>
+              <input type="text" class="form-control" id="contactPhone" value="613-820-4922 x 4657" aria-describedby="inputGroupPrepend" required>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding: 8px 0px 0px 0px; margin: 0px;"> <!-- installation section -->
+          <div class="col-md-3"> <!-- installer_name -->
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="installerNameLabel">Installer name</span>
+              <input type="text" class="form-control" id="installerName" value="Sean Glover" aria-describedby="inputGroupPrepend" required>
+            </div>
+          </div>
+          <div class="col-md-2"> <!-- installation_types -->
+            <div class="input-group">
+              <span class="input-group-text">Call type</span>
+              <select class="form-select" id="types" value="Installation" required>
+                <option selected disabled>Types</option>
+                <option value="I" id="" selected>Installation</option>
+                <option value="W" id="optionTypeLabel">Warranty</option>
+                <option value="S" id="">Service</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2"> <!-- status_checkbox -->
+            <div class="input-group col-3">
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" id="checkComplete" checked>
+              </div>
+              <input type="text" class="form-control" aria-label="Text input with checkbox" id="checkCompleteLabel" value="Check if complete" >
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-6"> <!-- start_date -->
+            <div class="input-group">
+              <span class="input-group-text" id="startDateLabel">Start</span>
+              <input id="startDate" class="form-control" type="date" value="2022-09-08" />
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-6"> <!-- end_date -->
+            <div class="input-group">
+              <span class="input-group-text" id="endDateLabel">End</span>
+              <input id="endDate" class="form-control" type="date" value="2022-09-09" />
+            </div>
+          </div>
+        </div>
+
+        <li class="flex-fill list-group-item" style="text-align: center; background-color: #4267B2; color: white; margin: 8px 8px 0px 0px;">Product summary - installer trained on checked items. Serial numbers preceded by No.</li>
+        <ul class="list-group list-group-horizontal" style="margin: 2px 1px 1px 1px;">
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Bubble tube {column, base and chassis} chassis - No. 10601666</li>
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Colored light spray - No. ROM012492</li>
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Colored light spray light source - No. 10832</li>
+        </ul>
+        <ul class="list-group list-group-horizontal" style="margin: 1px;">
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Aura projector - No. OA11709</li>
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Laser Stars projector - No. N/A</li>
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Wifi wireless controller - No. (not recorded but appears on underside)</li>
+        </ul>
+        <ul class="list-group list-group-horizontal" style="margin: 1px;">
+          <li class="flex-fill list-group-item"><input class="form-check-input me-1" type="checkbox" checked/>Mirrors - remove film once room is cleaned (same for bubble tube column)</li>
+        </ul>
+
+        <li class="flex-fill list-group-item" style="text-align: center; background-color: #E6E6FA; color: black; margin: 8px 8px 0px 0px;">Trained staff</li>
+        <ul class="list-group list-group-horizontal" style="margin: 2px 1px 1px 1px;">
+          <li class="flex-fill list-group-item">Ryan - Sept 9, 2022</li>
+        </ul>
+        <div class="form-group">
+            <label for="textArea_comments">Comments</label>
+            <textarea class="form-control" id="textArea_comments" rows="3">
+              Recommended the addition of 2 outlets, 1 inside the Fibre Optic enclosure and the 2nd above the projector shelf. Note: Also suggested the power for the projector shelf could be brought down from the ceiling.
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="textArea_issues">Issues</label>
+            <textarea class="form-control" id="textArea_issues" rows="3">
+              None
+            </textarea>
+        </div>
+
+        <div class="row" style="padding: 8px 0px 0px 0px; margin: 0px;"> <!-- address -->
+          <div class="col-md-9"> <!-- client_signature -->
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="clientSignatureLabel">Client signature</span>
+              <input type="text" class="form-control" id="clientSignature" value="" aria-describedby="inputGroupPrepend" required>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6"> <!-- sign_date -->
+            <div class="input-group">
+              <span class="input-group-text" id="signDateLabel">Dated</span>
+              <input id="signDate" class="form-control" type="date" value="2022-09-12" />
+            </div>
+          </div>
+        </div>
+
+        <div class="height-100 container d-flex justify-content-center align-items-center">
+            <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center"> <!-- overall -->
+                    <div class="ratings" id="starsOverall">
+                      <img src="images\starEmpty.png" id="1-overall" height="22" width="22">
+                      <img src="images\starEmpty.png" id="2-overall" height="22" width="22">
+                      <img src="images\starEmpty.png" id="3-overall" height="22" width="22">
+                      <img src="images\starEmpty.png" id="4-overall" height="22" width="22">
+                      <img src="images\starEmpty.png" id="5-overall" height="22" width="22">
+                    </div>
+                    <h3 class="review-count" id="overallRatingLabel" style="padding: 0px;">Overall rating</h3>
+                </div>
+                <div class="mt-1 d-flex justify-content-between align-items-center"> <!-- professionalism -->
+                    <h5 class="review-stat">Installer professionalism</h5>
+                    <div class="small-ratings" id="starsProf">
+                        <img src="images\starEmpty.png" id="1-profesional" height="16" width="16">
+                        <img src="images\starEmpty.png" id="2-profesional" height="16" width="16">
+                        <img src="images\starEmpty.png" id="3-profesional" height="16" width="16">
+                        <img src="images\starEmpty.png" id="4-profesional" height="16" width="16">
+                        <img src="images\starEmpty.png" id="5-profesional" height="16" width="16">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex justify-content-between align-items-center"> <!-- prompt -->
+                    <h5 class="review-stat">Installer promptness</h5>
+                    <div class="small-ratings" id="starsPrompt">
+                      <img src="images\starEmpty.png" id="1-prompt" height="16" width="16">
+                      <img src="images\starEmpty.png" id="2-prompt" height="16" width="16">
+                      <img src="images\starEmpty.png" id="3-prompt" height="16" width="16">
+                      <img src="images\starEmpty.png" id="4-prompt" height="16" width="16">
+                      <img src="images\starEmpty.png" id="5-prompt" height="16" width="16">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex justify-content-between align-items-center"> <!-- workmanship -->
+                    <h5 class="review-stat">Installer workmanship</h5>
+                    <div class="small-ratings" id="starsWork">
+                      <img src="images\starEmpty.png" id="1-workmanship" height="16" width="16">
+                      <img src="images\starEmpty.png" id="2-workmanship" height="16" width="16">
+                      <img src="images\starEmpty.png" id="3-workmanship" height="16" width="16">
+                      <img src="images\starEmpty.png" id="4-workmanship" height="16" width="16">
+                      <img src="images\starEmpty.png" id="5-workmanship" height="16" width="16">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex justify-content-between align-items-center"> <!-- product_quality -->
+                    <h5 class="review-stat">Product quality</h5>
+                    <div class="small-ratings" id="starsQuality">
+                      <img src="images\starEmpty.png" id="1-quality" height="16" width="16">
+                      <img src="images\starEmpty.png" id="2-quality" height="16" width="16">
+                      <img src="images\starEmpty.png" id="3-quality" height="16" width="16">
+                      <img src="images\starEmpty.png" id="4-quality" height="16" width="16">
+                      <img src="images\starEmpty.png" id="5-quality" height="16" width="16">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-12"> <!-- terms_checkbox -->
+          <!-- <div class="form-check"> -->
+            <!-- <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required> -->
+            <!-- <label class="form-check-label" for="invalidCheck"> -->
+              <!-- Agree to terms and conditions -->
+            <!-- </label> -->
+            <!-- <div class="invalid-feedback"> -->
+              <!-- You must agree before submitting. -->
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+
+        <!-- <div class="col-12"> <!-- submit_form -->
+          <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
+        <!-- </div> -->
+
+      </form>
+    </div>
+    <script>
+    // $( "img" ).mouseover(function() {
+    //   var self = this; // Save reference
+    //   var mouseStar = this.id.substr(0,1);
+    //   var parent = self.closest( "div" );
+    //   var starCount = 1;
+    //
+    //   $(parent).children()
+    //               .each(function() {
+    //               // "this" is the current child
+    //               // in the loop grabbing this
+    //               // element in the form of string
+    //               var childStar = $(this);
+    //               childStar.attr('src', "images/starEmpty.png");
+    //               if(starCount <= mouseStar)
+    //               {
+    //                 // alert(starCount + "_" + self.id + "_" + mouseStar);
+    //                 childStar.attr('src', "images/starFillPurple.png");
+    //               }
+    //               starCount++;
+    //           });
+    // });
+    $( "img" ).click(function() {
+      var clickedStar = this; // Save reference
+      var clickedIndex = parseInt(clickedStar.id.substr(0, 1));
+      var firstIsFill = $(clickedStar).attr('alt') == 'fill' & clickedIndex ==1;
+      var parent = clickedStar.closest( "div" );
+      var childIndex = 1;
+
+      $(parent).children()
+              .each(function() {
+              // "this" is the current child in the loop grabbing this element in the form of string
+              var childStar = $(this);
+              childStar.attr('src', "images/starEmpty.png");
+              childStar.attr('alt', "empty");
+              if(childIndex <= clickedIndex)
+              {
+                childStar.attr('src', "images/starFill.png");
+                childStar.attr('alt', "fill");
+              }
+              childIndex++;
+          });
+
+      if (firstIsFill) {
+        $(clickedStar).attr('src', "images/starEmpty.png");
+        $(clickedStar).attr('alt', "empty");
+        //alert(firstIsFill);
+      } else {
+
+      }
+
+      childIndex = 0;
+      var starsProf = $( "#starsProf" )[ 0 ]; // Equivalent to document.getElementById( "foo" )
+      childIndex += countStars(starsProf);
+
+      var starsPrompt = $( "#starsPrompt" )[ 0 ];
+      childIndex += countStars(starsPrompt);
+
+      var starsWork = $( "#starsWork" )[ 0 ];
+      childIndex += countStars(starsWork);
+
+      var starsQuality = $( "#starsQuality" )[ 0 ];
+      childIndex += countStars(starsQuality);
+
+      var overall = roundNumber(childIndex/4, 1);
+      var roundToNearestHalf = roundHalf(overall);
+      var floor = Math.floor(overall);
+      var ceiling = Math.ceil(overall);
+      var half = (roundToNearestHalf - floor) >= .5;
+      //alert("overall="+overall+"; nearest="+roundToNearestHalf+"; floor="+floor+"; ceiling="+ceiling+"; half="+half);
+
+      childIndex = 1;
+      var starsOverall = $( "#starsOverall" )[ 0 ];
+      $(starsOverall).children()
+              .each(function() {
+                var childStar = $(this);
+                //
+
+                var isFull = floor <= childIndex;
+                var isHalf = (ceiling == childIndex) & half;
+                var isEmpty = childIndex > ceiling;
+                //alert("index="+childIndex+"; full="+isFull+"; half="+isHalf+"; empty="+isEmpty);
+
+                if(isEmpty)
+                {
+                  childStar.attr('src', "images/starEmpty.png");
+                  //alert(childIndex + '<=' + roundToNearestHalf);
+                }
+                else if (isHalf) {
+                  childStar.attr('src', "images/starHalf.png");
+                  // alert(childIndex + '>' + roundToNearestHalf);
+                }
+                else if (isFull) {
+                  childStar.attr('src', "images/starFill.png");
+                }
+                childIndex++;
+          });
+          var ratingLabel = $( "#overallRatingLabel" ).html();
+          var frenchOrEnglish = $.trim(regexMatch(ratingLabel, /[a-z ]{1,}/gi));
+          $( "#overallRatingLabel" ).html(frenchOrEnglish + ' ' + overall);
+      // alert();
+    });
+
+    </script>
+  </body>
+</html>
