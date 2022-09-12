@@ -1,14 +1,16 @@
 $(document).ready(function(){
-  const starElements = document.getElementsByTagName('img');
-  for (const element of starElements) {
-    document.addEventListener('mouseenter', starEntered);
-}
+  document.querySelectorAll('img').forEach(item => {
+  item.addEventListener('mouseenter', event => {
+    starEntered(item);
+  })
+})
 });
-function starEntered(e) {
-  StarEnter(e.screenX, e.screenY);
+function starEntered(element) {
+  StarEnter(element.x, element.y);
 }
 function StarEnter(x, y) {
     var elem = document.elementFromPoint(x, y)
+    // console.log(elem);
     if (elem != null)
     {
         var elemSz = elem.getBoundingClientRect();
@@ -61,7 +63,7 @@ function StarEnter(x, y) {
                 var bigStar = bigStars[i];
                 if (bigStar != null) {bigStar.src = `/images/starFill.png`; }
             }
-            if (avgStars - fullStars >= .5) { bigStars[fullStars].src = `/images/starHalf.png`; }
+            if (avgStars - fullStars >= .5) { bigStars[fullStars].src = `/images/starHalf.png`;}
         }
     }
     return null;
