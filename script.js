@@ -1,7 +1,7 @@
 $(document).ready(function(){
   document.querySelectorAll('img').forEach(item => {
-    let imageId = item.id;
-    if(imageId.startsWith('star')){
+    let imageName = item.name;
+    if(imageName.startsWith('star')){
       item.addEventListener('mouseenter', event => {
         starEntered(item);
       })

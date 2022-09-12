@@ -9,9 +9,3 @@ th {
     border:none;
     height:280px;
 }
-/* .highlightStar {
-  img.setAttribute('src', 'images/' + 'starFill' + '.png');
-} */
-input[type=checkbox]:checked {
-  
-}
